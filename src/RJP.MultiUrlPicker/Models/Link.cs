@@ -11,7 +11,16 @@ namespace RJP.MultiUrlPicker.Models
     using Umbraco.Web.Extensions;
     using Umbraco.Core.Models.PublishedContent;
 
-    public class Link
+    public interface ILink
+    {
+        int? Id { get; }
+        string Name { get; }
+        string Url { get; }
+        string Target { get; }
+        LinkType Type { get; }
+    }
+
+    public class Link : ILink
     {
         private readonly JToken _linkItem;
         private bool _publishedContentInitialized = false;
